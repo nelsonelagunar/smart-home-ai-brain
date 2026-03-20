@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  smart-home-brain:
+    build: .
+    container_name: smart-home-brain
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+      - ~/.openclaw/workspace/scripts/broadlink_codes.json:/app/codes.json:ro
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - LLM_MODEL=llama3.2
+    network_mode: host  # Required for BroadLink discovery
+    restart: unless-stopped
+
+  # Optional: Ollama container for LLM
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #   restart: unless-stopped
+
+# volumes:
+#   ollama_data:

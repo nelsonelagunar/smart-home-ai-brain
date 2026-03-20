@@ -1,0 +1,63 @@
+# Smart Home AI Brain - Device Configuration
+# Copy this file to devices.yaml and customize
+
+devices:
+  # Example BroadLink device
+  - id: "broadlink_sala"
+    name: "BroadLink Sala"
+    type: "broadlink_ir"
+    ip: "192.168.1.25"
+    mac: "E8:16:56:26:1B:53"
+    manufacturer: "BroadLink"
+    model: "RM4PRO"
+    room: "Sala"
+    
+  - id: "broadlink_habitacion"
+    name: "BroadLink Habitación"
+    type: "broadlink_ir"
+    ip: "192.168.1.43"
+    mac: "E8:16:56:06:E0:D0"
+    manufacturer: "BroadLink"
+    model: "RM4MINI"
+    room: "Habitación"
+
+# Command mappings (learn these with the /learn endpoint)
+commands:
+  # TV Commands
+  tv_power:
+    device: "broadlink_sala"
+    type: "ir"
+    description: "Encender/apagar TV"
+    
+  tv_volume_up:
+    device: "broadlink_sala"
+    type: "ir"
+    description: "Subir volumen TV"
+    
+  # A/C Commands
+  ac_power:
+    device: "broadlink_sala"
+    type: "ir"
+    description: "Encender/apagar A/C"
+    
+  ac_cool_24:
+    device: "broadlink_sala"
+    type: "ir"
+    description: "A/C modo frío 24°C"
+
+# Automation rules
+automations:
+  - name: "Good Morning"
+    trigger:
+      time: "07:00"
+      days: [0, 1, 2, 3, 4]  # Weekdays
+    actions:
+      - device: "broadlink_sala"
+        command: "ac_power"
+        
+  - name: "Good Night"
+    trigger:
+      time: "23:00"
+    actions:
+      - device: "broadlink_sala"
+        command: "tv_power"
