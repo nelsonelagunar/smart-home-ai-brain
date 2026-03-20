@@ -2,16 +2,23 @@
 
 <div align="center">
 
-![Smart Home AI Brain](docs/images/logo.png)
+**🚧 Proyecto en Desarrollo Activo 🚧**
+
+*Este proyecto está en fase temprana de desarrollo. ¡Las contribuciones son bienvenidas!*
 
 **Sistema inteligente de automatización del hogar con IA**
 
+[![Status](https://img.shields.io/badge/Status-En_Desarrollo-yellow.svg)](https://github.com/nelsonelagunar/smart-home-ai-brain)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)](https://fastapi.tiangolo.com)
 [![Ollama](https://img.shields.io/badge/Ollama-Local_LLM-purple.svg)](https://ollama.ai)
 
-[Demo](#demo) • [Instalación](#instalación) • [Uso](#uso) • [Arquitectura](#arquitectura) • [Contribuir](#contribuir)
+[![GitHub Issues](https://img.shields.io/github/issues/nelsonelagunar/smart-home-ai-brain.svg)](https://github.com/nelsonelagunar/smart-home-ai-brain/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/nelsonelagunar/smart-home-ai-brain.svg)](https://github.com/nelsonelagunar/smart-home-ai-brain/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/nelsonelagunar/smart-home-ai-brain.svg)](https://github.com/nelsonelagunar/smart-home-ai-brain/network)
+
+[Demo](#demo) • [Instalación](#instalación) • [Uso](#uso) • [Roadmap](#roadmap) • [Contribuir](#contribuir)
 
 </div>
 
