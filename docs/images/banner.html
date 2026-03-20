@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home AI Brain - LinkedIn Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f23;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 1200px;
+            height: 628px;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .grid-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .glow {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 400px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.15) 0%, transparent 100%);
+        }
+        
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 60px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .brain-icon {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        
+        .brain-circle {
+            width: 180px;
+            height: 180px;
+            border: 3px solid;
+            border-image: linear-gradient(135deg, #6366f1, #8b5cf6) 1;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .neural-network {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .node {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+        
+        .node.center {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #a78bfa, #c4b5fd);
+            box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+        }
+        
+        .node.top-left { top: 10px; left: 10px; }
+        .node.top-right { top: 10px; right: 10px; }
+        .node.bottom-left { bottom: 10px; left: 10px; }
+        .node.bottom-right { bottom: 10px; right: 10px; }
+        
+        .connection {
+            position: absolute;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            height: 2px;
+            transform-origin: left center;
+        }
+        
+        .house-icon {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 60px;
+        }
+        
+        .house-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .title-section {
+            flex: 1;
+        }
+        
+        .title {
+            font-size: 52px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            padding: 10px 20px;
+            background: rgba(30, 30, 63, 0.8);
+            border: 1px solid;
+            border-radius: 8px;
+            font-size: 14px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feature.purple { border-color: #8b5cf6; }
+        .feature.indigo { border-color: #6366f1; }
+        
+        .tech-stack {
+            margin-bottom: 30px;
+        }
+        
+        .tech-label {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+        
+        .tech-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .tech-badge {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .tech-badge.python { background: #3178c6; }
+        .tech-badge.fastapi { background: #059669; }
+        .tech-badge.ollama { background: #7c3aed; }
+        .tech-badge.sqlite { background: #f97316; }
+        .tech-badge.docker { background: #2496ed; }
+        
+        .architecture {
+            margin-bottom: 20px;
+        }
+        
+        .arch-flow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .arch-box {
+            padding: 12px 24px;
+            background: rgba(30, 30, 63, 0.8);
+            border: 1px solid #6366f1;
+            border-radius: 6px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .arch-arrow {
+            color: #8b5cf6;
+            font-size: 18px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .badge {
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .badge.dev {
+            background: rgba(251, 191, 36, 0.2);
+            border: 1px solid #fbbf24;
+            color: #fbbf24;
+        }
+        
+        .badge.link {
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid #6366f1;
+            color: #a5b4fc;
+        }
+        
+        .author {
+            font-size: 14px;
+            color: #64748b;
+            text-align: right;
+        }
+        
+        .author-name {
+            color: #94a3b8;
+            font-weight: 500;
+        }
+        
+        .author-role {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid-bg"></div>
+        <div class="glow"></div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="brain-icon">
+                    <div class="brain-circle">
+                        <div class="neural-network">
+                            <div class="node center"></div>
+                            <div class="node top-left"></div>
+                            <div class="node top-right"></div>
+                            <div class="node bottom-left"></div>
+                            <div class="node bottom-right"></div>
+                        </div>
+                    </div>
+                    <div class="house-icon">
+                        <svg viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 5 L75 30 L75 55 L5 55 L5 30 Z" stroke="#64748b" stroke-width="2" fill="none"/>
+                            <rect x="25" y="35" width="30" height="20" stroke="#64748b" stroke-width="2" fill="none"/>
+                            <circle cx="40" cy="20" r="8" stroke="#f59e0b" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="title-section">
+                    <h1 class="title">Smart Home AI Brain</h1>
+                    <p class="subtitle">Sistema inteligente de automatización del hogar con IA</p>
+                    
+                    <div class="features">
+                        <div class="feature indigo">🔌 Auto-Discovery</div>
+                        <div class="feature purple">🤖 IA Local (Ollama)</div>
+                        <div class="feature indigo">📊 Pattern Learning</div>
+                        <div class="feature purple">🔒 100% Local</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-stack">
+                <div class="tech-label">Tech Stack:</div>
+                <div class="tech-badges">
+                    <span class="tech-badge python">Python</span>
+                    <span class="tech-badge fastapi">FastAPI</span>
+                    <span class="tech-badge ollama">Ollama</span>
+                    <span class="tech-badge sqlite">SQLite-vec</span>
+                    <span class="tech-badge docker">Docker</span>
+                </div>
+            </div>
+            
+            <div class="architecture">
+                <div class="tech-label">Architecture:</div>
+                <div class="arch-flow">
+                    <div class="arch-box">Web UI</div>
+                    <span class="arch-arrow">→</span>
+                    <div class="arch-box">REST API</div>
+                    <span class="arch-arrow">→</span>
+                    <div class="arch-box">Core Engine</div>
+                    <span class="arch-arrow">→</span>
+                    <div class="arch-box">Devices</div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <div class="badges">
+                    <div class="badge dev">🚧 In Development</div>
+                    <div class="badge link">📦 Open Source</div>
+                </div>
+                
+                <div class="author">
+                    <div class="author-name">Nelson Laguna</div>
+                    <div class="author-role">Azure DevOps Engineer • Kubernetes • Microservices</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Instructions for saving
+        console.log('%c📸 Para guardar la imagen:', 'font-size: 16px; font-weight: bold; color: #6366f1;');
+        console.log('1. Haz clic derecho en la imagen');
+        console.log('2. Selecciona "Guardar como..." o "Save as..."');
+        console.log('3. O usa una herramienta de screenshot');
+    </script>
+</body>
+</html>

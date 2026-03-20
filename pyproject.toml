@@ -9,7 +9,7 @@ description = "Sistema inteligente de automatización del hogar con IA"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Nelson Laguna", email = "nelson@example.com"}
+    {name = "Nelson Laguna", email = "nlaguna@mykeepper.com"}
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
