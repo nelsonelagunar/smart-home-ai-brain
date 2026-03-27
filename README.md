@@ -72,6 +72,7 @@
 
 - Python 3.11+
 - Ollama (para LLM local)
+- RabbitMQ (para mensajería)
 - Dispositivos BroadLink en la red
 
 ### Instalación Rápida
@@ -169,8 +170,8 @@ Abre `http://localhost:8000` en tu navegador.
 │  ┌──────────────────────┴──────────────────────┐            │
 │  │              Storage                           │            │
 │  │  ┌──────────┐ ┌──────────┐ ┌──────────┐      │            │
-│  │  │ SQLite   │ │ Vector   │ │  Redis   │      │            │
-│  │  │  (Data)  │ │(Memory)  │ │ (Cache)  │      │            │
+│  │  │ SQLite   │ │ Vector   │ │RabbitMQ │      │            │
+│  │  │  (Data)  │ │(Memory)  │ │ (Queue) │      │            │
 │  │  └──────────┘ └──────────┘ └──────────┘      │            │
 │  └──────────────────────────────────────────────┘            │
 └─────────────────────────────────────────────────────────────┘

@@ -12,6 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .core.device_manager import DeviceManager
 from .core.pattern_learner import PatternLearner
+from .core.messaging import MessagingManager, get_messaging
 from .api.routes import devices, chat, health
 from .ai.llm_client import LLMClient
 
@@ -23,17 +24,22 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Global instances
-device_manager: DeviceManager = None
-pattern_learner: PatternLearner = None
-llm_client: LLMClient = None
+device_manager: DeviceManager | None = None
+pattern_learner: PatternLearner | None = None
+llm_client: LLMClient | None = None
+messaging: MessagingManager | None = None
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Initialize and cleanup resources."""
-    global device_manager, pattern_learner, llm_client
+    global device_manager, pattern_learner, llm_client, messaging
     
     logger.info("🚀 Starting Smart Home AI Brain...")
+    
+    # Initialize messaging (RabbitMQ)
+    messaging = await get_messaging()
+    logger.info("✅ Messaging (RabbitMQ) initialized")
     
     # Initialize device manager
     device_manager = DeviceManager()
@@ -54,6 +60,7 @@ async def lifespan(app: FastAPI):
     
     # Cleanup
     logger.info("🛑 Shutting down Smart Home AI Brain...")
+    await messaging.cleanup()
     await device_manager.cleanup()
     await llm_client.cleanup()
 

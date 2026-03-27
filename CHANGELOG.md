@@ -18,6 +18,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive test suite
 - OUI database integration for device identification
 
+### Changed
+- **BREAKING**: Replaced Redis with RabbitMQ for message queuing
+  - More suitable for event-driven architecture
+  - Better support for event streaming and pub/sub patterns
+  - Added RabbitMQ docker service with management UI
+  - Created `core/messaging.py` module with MessagingManager
+  - Updated environment variable: `RABBITMQ_URL` instead of `REDIS_URL`
+
 ### Security
 - Local-only processing (no cloud dependencies)
 - No API keys required for basic functionality

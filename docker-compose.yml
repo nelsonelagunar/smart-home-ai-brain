@@ -13,7 +13,23 @@ services:
     environment:
       - OLLAMA_BASE_URL=http://host.docker.internal:11434
       - LLM_MODEL=llama3.2
+      - RABBITMQ_URL=amqp://rabbitmq:rabbitmq@rabbitmq:5672/
+    depends_on:
+      - rabbitmq
     network_mode: host  # Required for BroadLink discovery
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: smart-home-rabbitmq
+    ports:
+      - "5672:5672"   # AMQP
+      - "15672:15672" # Management UI
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
     restart: unless-stopped
 
   # Optional: Ollama container for LLM
@@ -25,5 +41,6 @@ services:
   #     - ollama_data:/root/.ollama
   #   restart: unless-stopped
 
-# volumes:
+volumes:
+  rabbitmq_data:
 #   ollama_data:

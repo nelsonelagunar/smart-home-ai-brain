@@ -47,7 +47,8 @@
 │  ┌─────────────────────────────────────────────────────────────────┐   │
 │  │                         Storage Layer                            │   │
 │  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │   │
-│  │  │   SQLite     │  │   Redis      │  │   File        │         │   │
+│  │  │   SQLite     │  │  RabbitMQ   │  │   File        │         │   │
+│  │  │   (Data)     │  │   (Queue)   │  │   Storage     │         │   │
 │  │  │   (Data)     │  │   (Cache)    │  │   Storage     │         │   │
 │  │  └──────────────┘  └──────────────┘  └──────────────┘         │   │
 │  └─────────────────────────────────────────────────────────────────┘   │
@@ -89,6 +90,7 @@
 | Alexa API | HTTPS | Echo devices |
 | Tuya API | HTTPS | Smart devices |
 | MQTT | TCP/IP | IoT devices |
+| RabbitMQ | AMQP | Event streaming |
 
 ### AI Layer
 
@@ -103,7 +105,7 @@
 | Component | Purpose |
 |-----------|---------|
 | SQLite | Device state, patterns, events |
-| Redis | Cache, sessions |
+| RabbitMQ | Message queue, event streaming |
 | File Storage | Learned codes, configs |
 
 ---
@@ -183,7 +185,7 @@ User Query → LLM → Context Builder → Response
 │  │ API   │  │ Ollama│      │
 │  └───────┘  └───────┘      │
 │  ┌───────┐  ┌───────┐      │
-│  │SQLite │  │ Redis │      │
+│  │SQLite │  │RabbitMQ│      │
 │  └───────┘  └───────┘      │
 └─────────────────────────────┘
 ```
@@ -214,7 +216,7 @@ User Query → LLM → Context Builder → Response
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama API URL |
 | `LLM_MODEL` | `llama3.2` | Model to use |
 | `DATABASE_URL` | `sqlite:///data/smart_home.db` | Database URL |
-| `REDIS_URL` | `redis://localhost:6379` | Redis URL |
+| `RABBITMQ_URL` | `amqp://guest:guest@localhost/` | RabbitMQ URL |
 | `LOG_LEVEL` | `INFO` | Logging level |
 
 ### Config Files
